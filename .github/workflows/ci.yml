@@ -1,0 +1,11 @@
+name: CI
+on:
+  push:
+    branches: [main]
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Проверка страницы
+        run: test -f site/index.html && grep -q "<h1>" site/index.html && echo "страница на месте"
